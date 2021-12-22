@@ -1,5 +1,4 @@
-import os
-import pytz
+
 import pyowm
 import streamlit as st
 from matplotlib import dates
