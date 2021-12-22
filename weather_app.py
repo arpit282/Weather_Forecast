@@ -1,9 +1,12 @@
+import os
+import pytz
 import pyowm
 import streamlit as st
 from matplotlib import dates
 from datetime import datetime
 from matplotlib import pyplot as plt
 import plotly.graph_objects as go
+import plotly.express as px
 from PIL import Image
 
 logo = Image.open('logo udaan.png')
@@ -117,13 +120,13 @@ def label_xaxis(days):
 
 def draw_bar_chart():
     days, temp_min, temp_max = get_temperature()
+    fig = plot_temperatures(days, temp_min, temp_max)
     # write_temperatures_on_bar_chart(bar_min, bar_max)
     st.plotly_chart(fig)
     st.title("Minimum and Maximum Temperatures")
 
     for i in range(0, 5):
         st.write("### ", temp_min[i], degree_sign, ' --- ', temp_max[i], degree_sign)
-        fig = plot_temperatures(days, temp_min, temp_max)
 
 
 def draw_line_chart():
